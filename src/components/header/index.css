@@ -1,0 +1,9 @@
+.header{
+    background-color: #8b008b;
+    font: 20px italic;
+    text-transform: uppercase;
+}
+
+.header__container {
+    padding: 20px 0;
+}
