@@ -1,3 +1,21 @@
+@font-face {
+    font-family: Sofia;
+    src: url('./fonts/Sofia-Regular.otf');
+}
+
+@font-face {
+	font-family: 'menu';
+	src: url('fonts/menu/menu.ttf') format('truetype'),
+	url('fonts/menu/menu.woff') format('woff'),
+	url('fonts/menu/menu.svg#menu') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
     color: #ffffff;
+}
+
+.hidden {
+	display: none;
 }

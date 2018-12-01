@@ -1,0 +1,46 @@
+.sidebar {
+    font: 20px Sofia;
+    text-align: left;
+}
+
+.sidebar-header {
+    color: #ffffff;
+}
+
+.sidebar__container {
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    border-right: 1px solid #502311;
+    background: #ffffff;
+}
+
+.sidebar-header__container {
+    background:#502311;
+    padding: 10% 10% 20% 10%;
+}
+
+.sidebar__item {
+    color: #502311;
+    padding: 2% 10%;
+}
+
+.sidebar-header {
+    vertical-align: middle;
+}
+
+.icon-star, .icon-drawer
+{
+	font-family: 'menu';
+	font-size: 100%;
+    color: #502311;
+    margin-right: .40em;
+}
+
+.icon-star:before {
+	content: '\e95d';
+}
+
+.icon-drawer:before {
+    content: '\e9d9';
+}

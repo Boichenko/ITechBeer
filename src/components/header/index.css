@@ -1,9 +1,39 @@
 .header{
-    background-color: #8b008b;
-    font: 20px italic;
+	background-image: url(../../images/header_background.jpg);
+	background-size: cover;
+    font: 20px Sofia;
     text-transform: uppercase;
 }
 
 .header__container {
     padding: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 50px;
+}
+
+.icon-menu
+{
+	font-family: 'menu';
+	font-size: 160%;
+	color: #ffffff;
+}
+
+.icon-menu:before {
+	content: '\e9bd';
+}
+
+.icon-settings:before {
+    content: '\2807';
+    font-size: 30px;
+}
+
+.settings__container {
+	margin-left: auto; 
+	margin-right: 20px; 
+}
+
+.icon-menu__container {
+	margin: 0 20px;
 }

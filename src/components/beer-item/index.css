@@ -1,0 +1,32 @@
+.beer-item {
+    list-style: none;
+    flex: 0 0 29.3333%;
+    margin: 1% 2%;
+    background-color: #ffffff;
+}
+
+.beer-item__logo {
+    width: 50px;
+    height: 120px;
+}
+
+.beer-item__information {
+    padding: 10px 0;
+}
+
+.beer-item__data-container {
+    background-color: #76463F;
+    text-align: left;
+    padding: 10px;
+    color: #ffffff;
+}
+
+.action-button {
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.beer-item__header {
+    text-transform: uppercase;
+    font-size: 1.2em;
+}

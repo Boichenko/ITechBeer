@@ -1,0 +1,1 @@
+export const RECEIVE_ERROR = 'COMMON/RECEIVE_ERROR';
