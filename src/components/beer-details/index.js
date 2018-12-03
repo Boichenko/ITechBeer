@@ -1,85 +1,114 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Method from './method-list';
 import Ingredients from './ingredients-list';
+import { cleanBeer, fetchBeer } from '../../reducers/beer/actions';
 
 import './index.css';
+import Loader from '../loader';
 
-const BeerDetails = ({beerItem={}}) => (
-    <div className='beer-data'>
-        <div className='beer-header__container'>
-            <div className='beer-main-info'>
-                <div className='beer-main-info__container'>
-                    <div>
-                        <span className='beer-name'>{beerItem.name}</span>
-                        <br />
-                        <span className='beer-headliner'>{beerItem.tagline}</span>
-                    </div>
-                    <button className='add-to-favorites'>add to favorites</button>
-                    <div className='beer-description'>
-                        <span>{beerItem.tagline}</span>
+const BeerDetails = ({ beer, fetchBeer, cleanBeer, match}) => { 
+    const [isMount, setIsMount] = useState(false);
+
+    useEffect(() => {   
+        if(!isMount)
+        {
+            cleanBeer();
+            console.log(match);
+            fetchBeer(match.params.beerId);
+            setIsMount(true);
+        }
+    })
+ 
+    return !beer ? (
+        <Loader />
+    ) 
+    : (
+        <div className='beer-data'>
+            <div className='beer-header__container'>
+                <div className='beer-main-info'>
+                    <div className='beer-main-info__container'>
+                        <div className='beer-name__container'>
+                            <p className='beer-name'>{beer.name}</p>
+                        </div>
+                        <div className='beer-headliner__container'>
+                            <p className='beer-headliner'>{beer.tagline}</p>
+                        </div>
+                        <button className='add-to-favorites'>add to favorites</button>
+                        <div className='beer-description__container'>
+                            <p className='beer-description'>{beer.description}</p>
+                        </div>
                     </div>
                 </div>
+                <div className='beer-logo__container'>
+                    <img className='beer-logo' src={beer.image_url} />
+                </div>
             </div>
-            <div className='beer-item__container'>
-                <img className='beer-logo' src={beerItem.image_url} />
-            </div>
-        </div>
-        <div className='beer-characteristics'>
-            <div className='properties'>
-                <span>Properties</span>
-                <ul className='properies-list'>
-                    <li className='properties-list-item bordered-circle'>
-                        <span>ABV</span>
-                        <button>ABV</button>
-                        <span>{beerItem.abv}</span>
-                    </li>
-                    <li className='properties-list-item bordered-circle'>
-                        <span>IBU</span>
-                        <button>IBU</button>
-                        <span>{beerItem.ibu}</span>
-                    </li>
-                    <li className='properties-list-item bordered-circle'>
-                        <span>EBC</span>
-                        <button>EBC</button>
-                        <span>{beerItem.ebc}</span>
-                    </li>
-                </ul>
-            </div>
-            {
-                beerItem.food_pairing &&
-                <div className='food-pairing'>
-                    <span>Food Pairing</span>
-                    <ul className='food-pairing-list'> 
-                        { beerItem.food_pairing.map((food, index) => (
+            <div className='beer-characteristics'>
+                <div className='beer-characteristic__container'>
+                    <div className='properties-content__container'>
+                        <span className='list-header'>Properties</span>
+                        <ul className='properties-list'>
+                            <li className='properties-list-item bordered-circle'>
+                                <div className='list-item__container'>
+                                    <span>ABV</span>
+                                    <button>ABV</button>
+                                    <span>{beer.abv}</span>
+                                </div>
+                            </li>
+                            <li className='properties-list-item bordered-circle'>
+                                <div className='list-item__container'>
+                                    <span>IBU</span>
+                                    <button>IBU</button>
+                                    <span>{beer.ibu}</span>
+                                </div>
+                            </li>
+                            <li className='properties-list-item bordered-circle'>
+                                <div className='list-item__container'>
+                                    <span>EBC</span>
+                                    <button>EBC</button>
+                                    <span>{beer.ebc}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='food-pairing__container'>
+                        <span className='list-header'>Food Pairing</span>
+                        <ul className='food-pairing-list'> 
+                            { beer.food_pairing.map((food, index) => (
                                 <li key={index} className='food-pairing-list-item bordered-angle'>
-                                    <span>{food}</span>
+                                    <div className='list-item__container'>
+                                        <span>{food}</span>
+                                    </div>
                                 </li>
-                            ))
-                        }
-                    </ul>
+                                ))
+                            }
+                            </ul>
+                    </div>
                 </div>
-            }
-            
+            </div>
+            <div className='beer-brewing__container'>
+                <p className='brewing-header'>Brewing</p>
+                <p className='brewing-content'>{beer.brewers_tips}</p>
+            </div>
+            <div className='beer-cooking__container'>
+                { beer.ingredients && <Ingredients /> } 
+                { beer.method && <Method /> } 
+            </div>
         </div>
-        <div className='beer-brewing'>
-            <span>Brewing</span>
-            <span>{beerItem.brewers_tips}</span>
-        </div>
-        <div className='beer-cooking'>
-            { beerItem.ingredients && <Ingredients /> } 
-            { beerItem.method && <Method /> } 
-        </div>
-    </div>
-)
+)}
 
 const mapStateToProps = state => ({
-    beer: state.beer.beer,
-    isFetching: state.dashboard.isFetching
+    beer: state.beer.beer
 })
+
+const mapDispatchToProps = dispatch => ({
+    cleanBeer: () => dispatch(cleanBeer()),
+    fetchBeer: (id) => dispatch(fetchBeer(id)),
+  })
 
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(BeerDetails)

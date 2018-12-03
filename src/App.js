@@ -22,13 +22,15 @@ const App = ({ sideBarVisible, toggleVisibilityMenu }) => {
   return (
     <Router>
       <div className="App" onClick={handleClick} >
-        <div className={sideBarVisible ? '' : 'hidden'} ref={node => menu = node}>
-          <Sidebar />
-        </div>
+        {sideBarVisible &&
+          <div className='sidebar__container' ref={node => menu = node}>
+            <Sidebar />
+          </div>
+        }
         <Header />
 
+        <Route path="/beer/:beerId" component={BeerDetails} />
         <Route exact path="/" component={Dashboard} />
-        <Route path="/:beerId?" component={() => <BeerDetails />} />
       </div>
     </Router>
   )

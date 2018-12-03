@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 const BeerListItem = ({ beer }) => (
@@ -15,8 +15,8 @@ const BeerListItem = ({ beer }) => (
                         <span>{beer.tagline}</span>
                     </div>
 
-                <button className="action-button"><NavLink beerItem={beer} to={`/beer?${beer.id}`}>open</NavLink></button>
-                <button className="action-button"><NavLink to={`/beer?${beer.id}`}>add to favorites</NavLink></button>
+                <Link to={`/beer/${beer.id}`}>open</Link>
+                <Link to={`/${beer.id}`}>add to favorites</Link>
             </div>
         </div>
     </li>

@@ -1,0 +1,27 @@
+.ingredients {
+    flex: 0 0 50%;
+}
+
+.ingredients-header {
+    font-size: 40px;
+    font-weight: bolder;
+    padding: 20px 0;
+}
+
+.ingredients-list {
+    border: 1px solid #502311;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
+li.ingredients-list-item { 
+    border-bottom: 1px solid #502311; 
+}
+li.ingredients-list-item:last-child { 
+    border-bottom: none; 
+}
+
+.ingredients-list-item__container {
+    padding: 15px;
+    display: flex;
+}

@@ -5,15 +5,12 @@ import {
 } from './types';
 
 const initialState = {
-    beers: []
-};
-
-const beers = (state = {
     isFetching: false,
     didInvalidate: false,
     beers: [],
     currentPage: 0
-}, action) => {
+}
+const beers = (state = initialState, action) => {
     switch (action.type) {
         case INVALIDATE_REQUEST_BEERS:
             return Object.assign({}, state, {

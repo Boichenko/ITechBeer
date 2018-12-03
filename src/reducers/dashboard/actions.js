@@ -22,12 +22,12 @@ export const receiveBeers = (page, json) => {
 export const catchErrorRequestingBeers = (page, error) => {
   return {
     type: INVALIDATE_REQUEST_BEERS,
-    error: error,
+    error,
     currentPage: page
   }
 }
 
-export function fetchBeers() {
+export const fetchBeers = () => {
   return function (dispatch) {
 
     dispatch(requestBeers())

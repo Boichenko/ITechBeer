@@ -4,24 +4,29 @@
 }
 
 .sidebar-header {
-    color: #ffffff;
+    color: #b4a8a4;
 }
 
 .sidebar__container {
     position: fixed;
     height: 100%;
-    width: 300px;
-    border-right: 1px solid #76463F;
-    background: #ffffff;
+    width: 250px;
+    border-right: 1px solid #23150f;
+    background: #b4a8a4;
+}
+
+.sidebar__items-list {
+    padding: 40px 0;
 }
 
 .sidebar-header__container {
-    background:#76463F;
+    background:#23150f;
     padding: 10% 10% 20% 10%;
+    box-shadow: 0px 8px 16px 0px rgba(38,29,26,1);
 }
 
 .sidebar__item {
-    color: #76463F;
+    color: #23150f;
     padding: 2% 10%;
 }
 
@@ -33,7 +38,7 @@
 {
 	font-family: 'menu';
 	font-size: 100%;
-    color: #76463F;
+    color: #23150f;
     margin-right: .40em;
 }
 

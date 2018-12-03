@@ -1,28 +1,109 @@
 .beer-data {
     color: #502311;
     font-family: 'Sofia';
+    height: calc(100% - 90px);
+    overflow: auto;
+    margin-right: -100px;
+    padding-right: 100px;
+    background: #ffe3da;
 }
 
 .beer-header__container {
     display: flex;
+    align-items: center;
 }
 
 .beer-logo {
     height: 200px;
-    width: 200px;
-    object-fit: cover;
 }
 
-.beer-item__container {
-    padding: 20px;
+.beer-logo__container {
+    flex: 0 0 40%;
 }
 
 .beer-main-info__container {
     padding: 20px;
     text-align: left;
+    flex: 0 0 60%;
+}
+
+.beer-name__container {
+    padding: 20px 0;
+}
+
+.beer-headliner__container {
+    padding: 10px 0;
+}
+
+.beer-description__container {
+    padding: 10px 0;
 }
 
 .beer-name {
     font-size: 40px;
     font-weight: bolder;
 }
+
+.add-to-favorites {
+    background: #502311;
+    color: #ffffff;
+    font: 20px 'Sofia';
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.list-header {
+    font-size: 35px;
+    font-weight: bolder;
+    line-height: 2em;
+}
+
+.beer-characteristic__container {
+    display: flex;
+    padding: 20px;
+}
+
+.properties-content__container, 
+.food-pairing__container {
+    flex: 0 0 50%;
+}
+
+.properties-list,
+.food-pairing-list {
+    border: 1px solid #502311;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
+.list-item__container {
+    padding: 15px;
+    display: flex;
+}
+
+li.properties-list-item, li.food-pairing-list-item { 
+    border-bottom: 1px solid #502311; 
+}
+li.properties-list-item:last-child, li.food-pairing-list-item:last-child { 
+    border-bottom: none; 
+}
+
+.brewing-header {
+    font-size: 40px;
+    font-weight: bolder;
+    padding: 20px 0;
+}
+
+.beer-brewing__container {
+    padding: 20px;
+    text-align: left;
+    width: 60%;
+}
+
+.beer-cooking__container {
+    display: flex;
+    align-items: center;
+}
+
+
+
