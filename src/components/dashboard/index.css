@@ -16,3 +16,14 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.error-message {
+    font: 35px Sofia;
+    color:#23150f;
+}
+
+.error-message__container {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+}

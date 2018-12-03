@@ -13,17 +13,10 @@ const BeerListItem = ({ beer }) => (
                         <div className="beer-item__header">{beer.name}</div>
                         <br />
                         <span>{beer.tagline}</span>
-                        </div>
+                    </div>
 
-                <NavLink to={`/beer?${beer.id}`}
-                                activeStyle={{
-                                textDecoration: 'none',
-                                color: 'black'
-                    }}> Open Beer</NavLink>
-
-                <button className="action-button">Open</button>
-                            
-                <button className="action-button">Favorites</button>
+                <button className="action-button"><NavLink beerItem={beer} to={`/beer?${beer.id}`}>open</NavLink></button>
+                <button className="action-button"><NavLink to={`/beer?${beer.id}`}>add to favorites</NavLink></button>
             </div>
         </div>
     </li>

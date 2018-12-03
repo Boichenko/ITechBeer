@@ -1,8 +1,10 @@
-.header{
+.header {
 	background-image: url(../../images/header_background.jpg);
 	background-size: cover;
-    font: 20px Sofia;
-    text-transform: uppercase;
+	font: 20px Sofia;
+	text-transform: uppercase;
+	box-shadow: 0px 15px 32px 0px rgba(38,29,26,1);
+	position: relative;
 }
 
 .header__container {

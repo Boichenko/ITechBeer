@@ -17,7 +17,9 @@ const beers = (state = {
     switch (action.type) {
         case INVALIDATE_REQUEST_BEERS:
             return Object.assign({}, state, {
-                didInvalidate: true
+                didInvalidate: true,
+                error: action.error,
+                currentPage: --action.currentPage
             })
         case REQUEST_BEERS:
             return Object.assign({}, state, {

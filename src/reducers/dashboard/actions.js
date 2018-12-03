@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { REQUEST_BEERS, RECEIVE_BEERS } from './types';
+import { REQUEST_BEERS, RECEIVE_BEERS, INVALIDATE_REQUEST_BEERS } from './types';
 import { PUNK_API_URL, BEERS_PER_PAGE } from '../../constants';
 
 let page = 0;
@@ -19,17 +19,26 @@ export const receiveBeers = (page, json) => {
   }
 }
 
+export const catchErrorRequestingBeers = (page, error) => {
+  return {
+    type: INVALIDATE_REQUEST_BEERS,
+    error: error,
+    currentPage: page
+  }
+}
+
 export function fetchBeers() {
   return function (dispatch) {
 
     dispatch(requestBeers())
     return fetch(PUNK_API_URL(`/beers?page=${page}&per_page=${BEERS_PER_PAGE}`))
-      .then(response => response.json())
-      .then(json =>
-
-        dispatch(receiveBeers(page, json))
-      )
-
-    // В реальном приложении вы также захотите ловить ошибки сетевых запросов.
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(json => dispatch(receiveBeers(page, json)))
+      .catch(error => dispatch(catchErrorRequestingBeers(page, error)))
   }
 }
