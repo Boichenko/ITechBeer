@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 
 import './index.css';
 
-const BeerData = (beerItem) => (
+const BeerDetails = (beerItem) => (
     <div className='beer-data'>
         <div className='beer-header__container'>
             <div className='beer-main-info'>
-                <div className='beer-name'>
-                    <span>Punk IPA 2007-2010</span>
-                    <br />
-                    <span>Post Modern Classic. Spiky. Tropical. Hoppy</span>
-                </div>
-                <button className='add-to-favorites' />
-                <div className='beer-description'>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                <div className='beer-main-info__container'>
+                    <div>
+                        <span className='beer-name'>Punk IPA 2007-2010</span>
+                        <br />
+                        <span className='beer-headliner'>Post Modern Classic. Spiky. Tropical. Hoppy</span>
+                    </div>
+                    <button className='add-to-favorites' />
+                    <div className='beer-description'>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                    </div>
                 </div>
             </div>
             <div className='beer-item__container'>
@@ -100,7 +102,12 @@ const BeerData = (beerItem) => (
     </div>
 )
 
+const mapStateToProps = state => ({
+    beer: state.beer.beer,
+    isFetching: state.dashboard.isFetching
+  })
+
 export default connect(
-    null,
+    mapStateToProps,
     null
-)(BeerData)
+)(BeerDetails)

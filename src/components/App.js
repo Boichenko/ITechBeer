@@ -2,14 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 
-import Dashboard from './components/dashboard/index';
-import Header from './components/header/index';
-import Sidebar from './components/sidebar/index';
+import Dashboard from './dashboard/index';
+import Header from './header/index';
+import Sidebar from './sidebar/index';
 
-import BeerData from './components/beer-data/index';
-
-
-import { toggleVisibilityMenu } from './reducers/sidebar/actions';
+import { toggleVisibilityMenu } from '../reducers/sidebar/actions';
 
 const App = ({ sideBarVisible, toggleVisibilityMenu }) => {
   let menu;
@@ -26,8 +23,7 @@ const App = ({ sideBarVisible, toggleVisibilityMenu }) => {
         <Sidebar />
       </div>
       <Header />
-      {/* <Dashboard/> */}
-      <BeerData/>
+      <Dashboard />
     </div>
   )
 }

@@ -16,3 +16,13 @@
 .beer-item__container {
     padding: 20px;
 }
+
+.beer-main-info__container {
+    padding: 20px;
+    text-align: left;
+}
+
+.beer-name {
+    font-size: 40px;
+    font-weight: bolder;
+}

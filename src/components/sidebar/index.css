@@ -11,17 +11,17 @@
     position: fixed;
     height: 100%;
     width: 300px;
-    border-right: 1px solid #502311;
+    border-right: 1px solid #76463F;
     background: #ffffff;
 }
 
 .sidebar-header__container {
-    background:#502311;
+    background:#76463F;
     padding: 10% 10% 20% 10%;
 }
 
 .sidebar__item {
-    color: #502311;
+    color: #76463F;
     padding: 2% 10%;
 }
 
@@ -33,7 +33,7 @@
 {
 	font-family: 'menu';
 	font-size: 100%;
-    color: #502311;
+    color: #76463F;
     margin-right: .40em;
 }
 

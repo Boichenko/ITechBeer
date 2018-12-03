@@ -1,74 +1,53 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import './index.css';
 import Loader from "../loader";
-import BeerItem from "../beer-item";
+import BeerListItem from "../beer-list-item";
+import {fetchBeers} from '../../reducers/dashboard/actions'
 
-class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.page = 1;
+const Dashboard = ({beers = [], fetchBeers, isFetching }) => {
+  let dashboard, list;
 
-    this.state = {
-      beers: [],
-      loadingState: false,
-      beer_count: 9,
-      page: 1
-    };  
-  }
-
-  componentDidMount() {
-    this.loadMoreItems();
-
-      this.refs.isScroll.addEventListener("scroll", () => {
-      console.log("working");
-      console.log(this.refs.isScroll.scrollTop );
-      console.log(this.refs.isScroll.clientHeight);
-      console.log(this.refs.isScroll.scrollHeight);
-
-      if (this.refs.isScroll.scrollTop 
-          + this.refs.isScroll.clientHeight >= this.refs.isScroll.scrollHeight-200) {
-        this.loadMoreItems();
-      }
-    });
-  }
-
-  loadMoreItems() {
-    if (this.state.loadingState) {
-      return;
+  useEffect(() => {    
+    if (list.clientHeight < dashboard.clientHeight && !isFetching)
+    {
+      fetchBeers();
     }
+  })
 
-    this.setState({ loadingState: true });
-    const api_url = `https://api.punkapi.com/v2/beers?page=${this.state.page}&per_page=${this.state.beer_count}`;
-
-    fetch(api_url)
-      .then(response=>response.json())
-      .then(data => (
-          this.setState(
-          { 
-            beers: this.state.beers.concat(data), 
-            loadingState: false,
-            page: this.state.page + 1
-          })
-        )
-      );
+  const handleScroll = () => {
+    if (!isFetching && dashboard.scrollTop +
+      dashboard.clientHeight >= dashboard.scrollHeight - 10) {
+      beers = fetchBeers();
+    }
   }
 
-  render() {
-    return (
-      <main className="main-content" ref="isScroll">
-          <ul className="beers-list">
-              { this.state.beers.map(function (beer, index) {
-                  return ( 
-                      <BeerItem key={index} item = {beer} />
-                    )
-                  }
-                )
-              }
-          </ul>
-          {this.state.loadingState && <Loader />}
-      </main>
-    )
-  }
+  return(
+    <main className="main-content" ref={ (node) => dashboard = node } onScroll={handleScroll}>
+      <div className="main-content__container">
+        <ul className="beers-list" ref={ (item) => list = item }>
+          { beers.map((beer, index) => (
+              <BeerListItem key={index} beer={beer} />
+            ))
+          }
+        </ul>
+        {isFetching && <Loader />}
+      </div>
+    </main> 
+  )
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  beers: state.dashboard.beers,
+  isFetching: state.dashboard.isFetching
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchBeers: () => dispatch(fetchBeers())
+})
+
+export default connect(
+  mapStateToProps, mapDispatchToProps
+)
+(Dashboard);
