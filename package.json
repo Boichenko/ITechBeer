@@ -6,6 +6,7 @@
     "dotenv-webpack": "^1.5.7",
     "env": "0.0.2",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.11",
     "normalize.css": "^5.0.0",
     "react": "^16.7.0-alpha.0",
     "react-dom": "^16.7.0-alpha.0",

@@ -6,10 +6,11 @@ import beerReducer from './beer';
 import favoritesReducer from './favorites';
 
 
-const rootReducer = combineReducers({menu: menuReducer, 
-    dashboard: dashboardReducer, 
-    beerItem: beerReducer,
-    favorites: favoritesReducer
+const rootReducer = combineReducers({
+        menu: menuReducer, 
+        dashboard: dashboardReducer, 
+        beerItem: beerReducer,
+        favorites: favoritesReducer
 })
 
 export default rootReducer;
