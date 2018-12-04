@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './index.css';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 const BeerListItem = ({ beer }) => (
     <li className="beer-item">
         <div className="beer-item__container">
-            <img className="beer-item__logo" src={beer.image_url}/>
+            <img className="beer-item__logo" alt="" src={beer.image_url}/>
 
                 <div className="beer-item__data-container">
                     <div className="beer-item__information">
@@ -15,8 +15,8 @@ const BeerListItem = ({ beer }) => (
                         <span>{beer.tagline}</span>
                     </div>
 
-                <Link to={`/beer/${beer.id}`}>open</Link>
-                <Link to={`/${beer.id}`}>add to favorites</Link>
+                <Link className="action-link" to={`/beer/${beer.id}`}>open</Link>
+                <Link className="action-link" to={`/${beer.id}`}>add to favorites</Link>
             </div>
         </div>
     </li>

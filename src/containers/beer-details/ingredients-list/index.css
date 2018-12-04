@@ -23,5 +23,11 @@ li.ingredients-list-item:last-child {
 
 .ingredients-list-item__container {
     padding: 15px;
-    display: flex;
+    text-align: left;
+}
+
+.ingredient-category {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 20px; 
 }

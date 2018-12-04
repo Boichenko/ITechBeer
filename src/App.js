@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Dashboard from './components/dashboard/index';
-import Header from './components/header/index';
+import Dashboard from './containers/dashboard/index';
+import Header from './containers/header/index';
 import Sidebar from './components/sidebar/index';
-import BeerDetails from './components/beer-details';
+import BeerDetails from './containers/beer-details';
 
 import { toggleVisibilityMenu } from './reducers/sidebar/actions';
 

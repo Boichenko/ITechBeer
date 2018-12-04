@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import './index.css';
-import Loader from "../loader";
+import Loader from "../../components/loader";
 import BeerListItem from "../beer-list-item";
 import {fetchBeers} from '../../reducers/dashboard/actions'
 
@@ -57,5 +57,4 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps, mapDispatchToProps
-)
-(Dashboard);
+)(Dashboard);

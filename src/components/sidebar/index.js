@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './index.css';
 
 const Sidebar = () => (
@@ -9,8 +11,10 @@ const Sidebar = () => (
             </div>
             <ul className="sidebar__items-list">
                 <li className="sidebar__item">
-                    <i className="icon-star" />
-                    Home
+                    <Link to={`/`}>
+                        <i className="icon-star" />
+                        Home
+                    </Link>
                 </li>
                 <li className="sidebar__item">
                     <i className="icon-drawer" />

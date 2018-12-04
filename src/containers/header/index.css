@@ -13,13 +13,14 @@
 	justify-content: space-between;
 	align-items: center;
 	height: 50px;
+	margin: 0 auto;
 }
 
 .icon-menu
 {
 	font-family: 'menu';
 	font-size: 160%;
-	color: #ffffff;
+	color: #ffeae0;
 }
 
 .icon-menu:before {

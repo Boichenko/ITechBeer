@@ -12,6 +12,15 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'beer';
+	src: url('fonts/beer/beer.ttf') format('truetype'),
+	url('fonts/beer/beer.woff') format('woff'),
+	url('fonts/beer/beer.svg#beer') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
     color: #ffffff;
 }

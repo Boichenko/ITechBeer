@@ -8,6 +8,11 @@
     background: #ffe3da;
 }
 
+.beer-data__container {
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
 .beer-header__container {
     display: flex;
     align-items: center;
@@ -102,8 +107,40 @@ li.properties-list-item:last-child, li.food-pairing-list-item:last-child {
 
 .beer-cooking__container {
     display: flex;
-    align-items: center;
+    align-items: top;
+    padding: 20px 0;
 }
+
+.icon-notification {
+    font-family: 'beer';
+    padding: 0 10px;
+}
+
+.icon-notification__container {
+    padding: 0 10px;
+}
+
+.icon-notification:before {
+	content: '\ea08';
+}
+
+.icon-notification:hover::after {
+    content: attr(data-title);
+    z-index: 1;
+    position: absolute;
+    background: #fff3ef;
+    font-family: 'Sofia';
+    font-size: 11px;
+    padding: 5px 10px; 
+    border: 1px solid rgb(95, 83, 83);
+    border-radius: 10px;
+    color: #502311;
+}
+
+.property-value__container {
+    margin-left: auto;
+}
+
 
 
 

@@ -30,3 +30,11 @@
     text-transform: uppercase;
     font-size: 1.2em;
 }
+
+.action-link {
+    color: #ffffff;
+    font: 18px 'Sofia';
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 10px;
+}
