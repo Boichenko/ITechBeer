@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './index.css';
 import { connect } from 'net';
 
+import { Link } from 'react-router-dom'
+
 
 const Favorites = (favoriteBeers, removeFromFavorites) =>  (
     <div>
@@ -18,8 +20,8 @@ const Favorites = (favoriteBeers, removeFromFavorites) =>  (
                 </div>
             </div>
         </div>
-        <div className='action-button'>
-            <Link>open</Link>
+        <div className='action-buttons'>
+            <Link className="action-link" to={`/beer/${beer.id}`}>open></Link>
             <button>remove favorite</button>
         </div>
     </div>

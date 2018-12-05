@@ -7,6 +7,7 @@ import Dashboard from './containers/dashboard/index';
 import Header from './containers/header/index';
 import Sidebar from './components/sidebar/index';
 import BeerDetails from './containers/beer-details';
+import Favorites from './containers/favorites';
 
 import { toggleVisibilityMenu } from './reducers/sidebar/actions';
 
@@ -29,8 +30,9 @@ const App = ({ sideBarVisible, toggleVisibilityMenu }) => {
         }
         <Header />
 
-        <Route path="/beer/:beerId" component={BeerDetails} />
-        <Route exact path="/" component={Dashboard} />
+        <Route path="/beer/:beerId" component={ BeerDetail } />
+        <Route exact path="/" component={ Dashboard } />
+        <Route exact path="/favorites" component={ Favorites } />
       </div>
     </Router>
   )
