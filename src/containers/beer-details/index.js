@@ -111,7 +111,7 @@ const BeerDetails = ({ beer, fetchBeer, cleanBeer, match}) => {
 )}
 
 const mapStateToProps = state => ({
-    beer: state.beer.beer
+    beer: state.beerItem.beer
 })
 
 const mapDispatchToProps = dispatch => ({

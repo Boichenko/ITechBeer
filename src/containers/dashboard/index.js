@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import './index.css';
 import Loader from "../../components/loader";
 import BeerListItem from "../beer-list-item";
-import {fetchBeers} from '../../reducers/dashboard/actions'
+import { fetchBeers } from '../../reducers/dashboard/actions'
 
-const Dashboard = ({beers = [], fetchBeers, isFetching, error }) => {
+const Dashboard = ({beers = [], fetchBeers, isFetching, error, favorites }) => {
   let dashboard, list;
 
   useEffect(() => {    
@@ -23,13 +24,17 @@ const Dashboard = ({beers = [], fetchBeers, isFetching, error }) => {
     }
   }
 
+  const isBeerItemFavorite = (beerId) => {
+    return _.includes(favorites, beerId)
+  }
+
   return(
-      <main className="main-content" ref={ (node) => dashboard = node } onScroll={handleScroll}>
+      <main className="main-content" ref={ (node) => dashboard = node } onScroll={ handleScroll }>
         <div className="main-content__container">
           <ul className="beers-list" ref={ (item) => list = item }>
-            { beers.map((beer, index) => (
-                <BeerListItem key={index} beer={beer} />
-              ))
+            { beers.map((beer, index) => { return (
+                <BeerListItem key={index} beer={ beer } isFavorite = { isBeerItemFavorite(beer.id) } />
+              )} )
             }
           </ul>
           {isFetching && !error && <Loader />}
@@ -40,19 +45,18 @@ const Dashboard = ({beers = [], fetchBeers, isFetching, error }) => {
             </div>
         }
       </main> 
-
-
   )
 }
 
 const mapStateToProps = state => ({
   beers: state.dashboard.beers,
   isFetching: state.dashboard.isFetching,
-  error: state.dashboard.error
+  error: state.dashboard.error,
+  favorites: state.favorites.beerItems
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchBeers: () => dispatch(fetchBeers())
+    fetchBeers: () => dispatch(fetchBeers())
 })
 
 export default connect(

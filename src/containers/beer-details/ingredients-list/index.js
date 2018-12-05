@@ -24,7 +24,7 @@ const Ingredients = ({ ingredients }) => (
 )
 
 const mapStateToProps = state => ({
-    ingredients: state.beer.beer.ingredients,
+    ingredients: state.beerItem.beer.ingredients,
 })
 
 export default connect(

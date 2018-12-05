@@ -3,7 +3,9 @@ import './index.css';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-const BeerListItem = ({ beer }) => (
+import { addToFavorites, removeFromFavorites } from '../../reducers/favorites/actions';
+
+const BeerListItem = ({ beer, isFavorite, addToFavorites, removeFromFavorites }) => (
     <li className="beer-item">
         <div className="beer-item__container">
             <img className="beer-item__logo" alt="" src={beer.image_url}/>
@@ -16,17 +18,21 @@ const BeerListItem = ({ beer }) => (
                     </div>
 
                 <Link className="action-link" to={`/beer/${beer.id}`}>open</Link>
-                <Link className="action-link" to={`/${beer.id}`}>add to favorites</Link>
+                {
+                    (
+                        isFavorite && <button className="action-link" onClick = { () => removeFromFavorites(beer.id) }>remove from favorites</button>
+                    ) || <button className="action-link" onClick={ () => addToFavorites(beer.id) }>add to favorites</button>
+                }
             </div>
         </div>
     </li>
-)
+);
 
-const mapStateToProps = state => ({
+const mapDispatchToProps = dispatch => ({
+    addToFavorites: (id) => dispatch(addToFavorites(id)),
+    removeFromFavorites: (id) => dispatch(removeFromFavorites(id))
 })
 
-const mapDispatchToProps = dispatch => ({})
-
 export default connect(
-        mapStateToProps, mapDispatchToProps
+    null, mapDispatchToProps
 )(BeerListItem);

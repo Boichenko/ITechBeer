@@ -127,7 +127,7 @@ li.properties-list-item:last-child, li.food-pairing-list-item:last-child {
 .icon-notification:hover::after {
     content: attr(data-title);
     z-index: 1;
-    position: absolute;
+    position: relative;
     background: #fff3ef;
     font-family: 'Sofia';
     font-size: 11px;

@@ -34,7 +34,7 @@ const MethodList = ({method}) =>  { console.log(method); return(
 )}
 
 const mapStateToProps = state => ({
-    method: state.beer.beer.method,
+    method: state.beerItem.beer.method,
 })
 
 export default connect(

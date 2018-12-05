@@ -1,33 +1,27 @@
-import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES, CONTAINS_IN_FAVORITES, GET_FAVORITES } from './types';
-import { _  as lodash } from 'lodash';
+import { remove }  from 'lodash';
+
+import LocalStorage from './../../helpers/localStorageHelper';
+import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from './types';
 
 let beerItems;
-const initialState = {}
+const initialState = {
+    beerItems: LocalStorage.getFavorites(),
+}
 
 const favoritesReducer = (state = initialState, action) => {
-    switch(action.type) {
-        case ADD_TO_FAVORITES:
-            beerItems = state.beerItems;
-            beerItems.push(action.id);
-            localStorage.setItem('favorite_beers', beerItems)
-            return Object.assign({}, state, {
-                beerItems
-            });
-        case REMOVE_FROM_FAVORITES:
-            beerItems = state.beerItems;
-            lodash.remove(beerItems, beerItem => beerItem === action.type.id)
-            localStorage.setItem('favorite_beers', beerItems)
-            return Object.assign({}, state, {
-                beerItems
-            });
-        case GET_FAVORITES:
-            beerItems = JSON.parse(localStorage.getItem('favorite_beers')) || [];
-            return Object.assign({}, state, {
-                beerItems
-            })
-        case CONTAINS_IN_FAVORITES:
-        default:
-            return state;
+        switch(action.type) {
+            case ADD_TO_FAVORITES:
+                beerItems = [...state.beerItems];
+                beerItems.push(action.id);
+                LocalStorage.addFavorite(action.id);
+                return {...state, beerItems};
+            case REMOVE_FROM_FAVORITES:
+                beerItems = [...state.beerItems];
+                remove(beerItems, item => item === action.id);
+                LocalStorage.removeFavorite(action.id);
+                return {...state, beerItems};
+            default:
+                return state;
     }
 
 }
