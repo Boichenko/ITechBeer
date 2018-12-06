@@ -1,15 +1,13 @@
 import React from 'react';
+import  { connect } from 'react-redux';
 
 import './index.css';
 
-const Filter = () => {
+const Filter = () => (
     <div className='beer-filter'>
-        <div className='beer-container'>
-            <div className='beer-name-filter__container'>
-                <input className='beer-name-input'></input>
-            </div>
+        <div className='beer-filter__inner-container'>
             <div className='beer-characteristics-filter'>
-                <span>Filter results</span>
+                <p className='filter-results-header'>Filter results</p>
                 <div className='alchohol'>
                     <span className='characterictic-name'>Alcohol by volume</span>
                     <span></span>
@@ -28,7 +26,7 @@ const Filter = () => {
             </div>
         </div>
     </div>
-}
+)
 
-export default Filter;
+export default connect(null, null)(Filter);
 

@@ -1,0 +1,67 @@
+.favorites {
+    color: #502311;
+    background: #ffe3da;
+    font-family: 'Sofia';
+    overflow: auto;
+    margin-right: -100px;
+    padding-right: 100px;
+    height: calc(100% - 90px);
+}
+
+.favorite__inner-container {
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.favorite-header {
+    text-align: left;
+    padding: 20px;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.favorite-action-link {
+    color: #502311;
+    font: 18px 'Sofia';
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.favorite-card__inner-container {
+    display: flex;
+    text-align: left;
+    padding: 20px;
+    align-items: center;
+}
+
+.favorite-card-name {
+    font-size: 25px;
+    font-weight: bolder;
+    padding: 0 0 10px 0;
+}
+
+.favorite-img {
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+.favorite-img__inner-container {
+    flex: 0 0 30%;
+}
+
+.favorite-info__inner-container {
+    flex: 0 0 70%;
+}
+
+.favorite-card-tagline {
+    padding: 0 0 20px 0;
+    color: #caa7a7;
+}
+
+.action-buttons__inner-container {
+    text-align: left;
+    padding: 0 20px;
+}

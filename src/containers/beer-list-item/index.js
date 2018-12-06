@@ -12,9 +12,8 @@ const BeerListItem = ({ beer, isFavorite, addToFavorites, removeFromFavorites })
 
                 <div className="beer-item__data-container">
                     <div className="beer-item__information">
-                        <div className="beer-item__header">{beer.name}</div>
-                        <br />
-                        <span>{beer.tagline}</span>
+                        <p className="beer-item__header">{beer.name}</p>
+                        <p className='beer-item-tagline'>{beer.tagline}</p>
                     </div>
 
                 <Link className="action-link" to={`/beer/${beer.id}`}>open</Link>

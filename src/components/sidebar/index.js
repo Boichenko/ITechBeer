@@ -17,8 +17,10 @@ const Sidebar = () => (
                     </Link>
                 </li>
                 <li className="sidebar__item">
-                    <i className="icon-drawer" />
-                    Favorites
+                    <Link to={`/favorites`}>
+                        <i className="icon-drawer" />
+                        Favorites
+                    </Link>
                 </li>
             </ul>
         </div>

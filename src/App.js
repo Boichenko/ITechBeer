@@ -30,7 +30,7 @@ const App = ({ sideBarVisible, toggleVisibilityMenu }) => {
         }
         <Header />
 
-        <Route path="/beer/:beerId" component={ BeerDetail } />
+        <Route path="/beer/:beerId" component={ BeerDetails } />
         <Route exact path="/" component={ Dashboard } />
         <Route exact path="/favorites" component={ Favorites } />
       </div>

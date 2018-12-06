@@ -21,6 +21,15 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'filter';
+	src: url('fonts/filter/filter.ttf') format('truetype'),
+	url('fonts/filter/filter.woff') format('woff'),
+	url('fonts/filter/filter.svg#beer') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
     color: #ffffff;
 }
