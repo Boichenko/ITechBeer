@@ -1,0 +1,5 @@
+export const SET_ALCOHOL = 'FILTER/SET_ALCOHOL';
+export const SET_BITTERNESS = 'FILTER/SET_BETTERNESS';
+export const SET_COLOR = 'FILTER/SER_COLOR';
+
+

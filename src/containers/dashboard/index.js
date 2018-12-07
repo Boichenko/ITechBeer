@@ -8,7 +8,7 @@ import Filter from "../filter";
 import BeerListItem from "../beer-list-item";
 import { fetchBeers, fetchBeersByName } from '../../reducers/dashboard/actions'
 
-const Dashboard = ({beers = [], fetchBeers, isFetching, error, favorites, searchBeers, isSearched }) => {
+const Dashboard = ({beers = [], fetchBeers, isFetching, error, favorites, searchBeers, isSearched, name }) => {
   let dashboard, list, searchName;
 
   useEffect(() => {    
@@ -33,10 +33,9 @@ const Dashboard = ({beers = [], fetchBeers, isFetching, error, favorites, search
       e.preventDefault()
       let searchValue = searchName.value;
       if (!searchValue.trim()) {
-        return
+        fetchBeers()
       }
       searchBeers(searchValue);
-      searchName.value = ''
   }
 
   return(
@@ -44,7 +43,7 @@ const Dashboard = ({beers = [], fetchBeers, isFetching, error, favorites, search
         <div className="main-content__container">
           <div className='beer-name-filter__container'>
               <form onSubmit={ submitSearch} >
-                <input ref={ node => searchName = node }  type='text' placeholder='Enter Beer Name...' className='beer-name-input'></input>
+                <input ref={ node => searchName = node }  type='text' placeholder='Enter Beer Name...' defaultValue={ name } className='beer-name-input'></input>
                 <button type="submit" className='search-button'><i className="icon-search" /></button>
               </form>
               {isSearched && <Filter/>}
@@ -71,7 +70,8 @@ const mapStateToProps = state => ({
   isFetching: state.dashboard.isFetching,
   error: state.dashboard.error,
   favorites: state.favorites.beerItemIds,
-  isSearched: state.dashboard.isSearched
+  isSearched: state.dashboard.isSearched,
+  name: state.dashboard.name
 })
 
 const mapDispatchToProps = dispatch => ({

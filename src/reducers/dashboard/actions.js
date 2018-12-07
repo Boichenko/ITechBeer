@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { REQUEST_BEERS, RECEIVE_BEERS, INVALIDATE_REQUEST_BEERS, SEARCH_REQUEST_BEERS, SEARCH_RECEIVE_BEERS, INVALIDATE_SEARCH_BEERS } from './types';
+import { REQUEST_BEERS, RECEIVE_BEERS, INVALIDATE_REQUEST_BEERS, SEARCH_REQUEST_BEERS, SEARCH_RECEIVE_BEERS, INVALIDATE_SEARCH_BEERS, FILTER_BEERS } from './types';
 import { PUNK_API_URL, BEERS_PER_PAGE } from '../../constants';
 
 let page = 0;
@@ -47,6 +47,15 @@ export const catchErrorRequestingSearchBeers = (name, error) => {
     type: INVALIDATE_SEARCH_BEERS,
     error,
     searchName: name
+  }
+}
+
+export const filterBeers = (alcohol, bitterness, color) => {
+  return {
+    type: FILTER_BEERS,
+    alcohol,
+    bitterness,
+    color
   }
 }
 

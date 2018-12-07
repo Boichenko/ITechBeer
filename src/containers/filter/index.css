@@ -1,0 +1,58 @@
+.beer-filter {
+    color: #23150f;
+    font: 15px 'Sofia';
+}
+
+.beer-filter__inner-container {
+    padding: 20px;
+}
+
+.alchohol, .bitterness, .color-ebc {
+    display: flex;
+    align-items: center;
+}
+
+.characteristic-name {
+    flex: 0 0 50%
+}
+
+.characteristic-value {
+    flex: 0 0 40%;
+    margin: 0 0 0 10px;
+}
+
+.characteristic-value {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 3px;
+    background: #23150f;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.characteristic-value:hover {
+    opacity: 1;
+}
+
+.characteristic-value::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #23150f;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.characteristic-value::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #23150f;
+    cursor: pointer;
+}
+
+.filter-results-header{
+    padding: 10px 0;
+}
