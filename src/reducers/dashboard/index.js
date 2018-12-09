@@ -6,8 +6,7 @@ import {
     RECEIVE_BEERS,
     SEARCH_RECEIVE_BEERS,
     SEARCH_REQUEST_BEERS,
-    INVALIDATE_SEARCH_BEERS,
-    FILTER_BEERS
+    INVALIDATE_SEARCH_BEERS
 } from './types';
 
 
@@ -15,8 +14,7 @@ const initialState = {
     isFetching: false,
     didInvalidate: false,
     beers: [],
-    currentPage: 0,
-    name: ''
+    currentPage: 0
 }
 const beers = (state = initialState, action) => {
     switch (action.type) {
@@ -44,13 +42,11 @@ const beers = (state = initialState, action) => {
             return Object.assign({}, state, {
                 didInvalidate: true,
                 error: action.error,
-                name: action.searchName
             })
         case SEARCH_REQUEST_BEERS:
             return Object.assign({}, state, {
                 isFetching: true,
                 didInvalidate: false,
-                name: action.searchName
             })
         case SEARCH_RECEIVE_BEERS:
             return Object.assign({}, state, {
@@ -58,13 +54,6 @@ const beers = (state = initialState, action) => {
                 didInvalidate: false,
                 isSearched: action.isSearched,
                 beers: action.beers,
-            })
-        case FILTER_BEERS: 
-        console.log(action.alcohol)
-        console.log(action.bitterness)
-        console.log(action.color)
-            return Object.assign({}, state, {
-                beers: filter(state.beers, (item) => ( item.abv <= action.alcohol && item.ibu <= action.bitterness && item.ebc <= action.color ))
             })
         default:
             return state
@@ -79,7 +68,6 @@ const dashboardReducer = (state = initialState, action) => {
         case SEARCH_RECEIVE_BEERS:
         case SEARCH_REQUEST_BEERS:
         case INVALIDATE_REQUEST_BEERS:
-        case FILTER_BEERS:
             return Object.assign({}, beers(state, action))
         default:
             return state

@@ -6,10 +6,10 @@ import './index.css';
 import Loader from "../../components/loader";
 import Filter from "../filter";
 import BeerListItem from "../beer-list-item";
-import { fetchBeers, fetchBeersByName } from '../../reducers/dashboard/actions'
+import { fetchBeers } from '../../reducers/dashboard/actions'
 
-const Dashboard = ({beers = [], fetchBeers, isFetching, error, favorites, searchBeers, isSearched, name }) => {
-  let dashboard, list, searchName;
+const Dashboard = ({beers = [], fetchBeers, isFetching, error, favorites, isSearched }) => {
+  let dashboard, list;
 
   useEffect(() => {    
     if (list.clientHeight < dashboard.clientHeight && !isFetching && !isSearched)
@@ -29,25 +29,10 @@ const Dashboard = ({beers = [], fetchBeers, isFetching, error, favorites, search
     return _.includes(favorites, beerId)
   }
 
-  const submitSearch = (e) => {
-      e.preventDefault()
-      let searchValue = searchName.value;
-      if (!searchValue.trim()) {
-        fetchBeers()
-      }
-      searchBeers(searchValue);
-  }
-
   return(
       <main className="main-content" ref={ (node) => dashboard = node } onScroll={ handleScroll }>
         <div className="main-content__container">
-          <div className='beer-name-filter__container'>
-              <form onSubmit={ submitSearch} >
-                <input ref={ node => searchName = node }  type='text' placeholder='Enter Beer Name...' defaultValue={ name } className='beer-name-input'></input>
-                <button type="submit" className='search-button'><i className="icon-search" /></button>
-              </form>
-              {isSearched && <Filter/>}
-          </div>
+          <Filter/>
           <ul className="beers-list" ref={ (item) => list = item }>
             { beers.map((beer, index) => { return (
                 <BeerListItem key={index} beer={ beer } isFavorite = { isBeerItemFavorite(beer.id) } />
@@ -66,17 +51,15 @@ const Dashboard = ({beers = [], fetchBeers, isFetching, error, favorites, search
 }
 
 const mapStateToProps = state => ({
+  isSearched: state.dashboard.isSearched,
   beers: state.dashboard.beers,
   isFetching: state.dashboard.isFetching,
   error: state.dashboard.error,
-  favorites: state.favorites.beerItemIds,
-  isSearched: state.dashboard.isSearched,
-  name: state.dashboard.name
+  favorites: state.favorites.beerItemIds
 })
 
 const mapDispatchToProps = dispatch => ({
-    fetchBeers: () => dispatch(fetchBeers()),
-    searchBeers: (name) => dispatch(fetchBeersByName(name))
+    fetchBeers: () => dispatch(fetchBeers())
 })
 
 export default connect(

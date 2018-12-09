@@ -28,33 +28,3 @@
     top: 50%;
     left: 35%;
 }
-
-.beer-name-filter__container {
-    padding: 50px 0 20px 0;
-}
-
-.beer-name-input {
-    border: none;
-    background: transparent;
-    border-bottom: #4d382f 2px solid;
-    width: 35%;
-    font: 15px 'Sofia';
-}
-
-.beer-name-input:focus {
-    border: none;
-    border-bottom: #23150f 2px solid;
-    outline: none;
-}
-
-.icon-search
-{
-	font-family: 'filter';
-	font-size: 130%;
-    color: #502311;
-    margin-right: .40em;
-}
-
-.icon-search:before {
-	content: '\e986';
-}

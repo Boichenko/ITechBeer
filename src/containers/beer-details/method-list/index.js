@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './index.css';
 
-const MethodList = ({method}) =>  { console.log(method); return(
+const MethodList = ({method}) =>  { return(
     <div className='method'>
         <p className='method-header'>Method</p>
             <ul className='method-list'>

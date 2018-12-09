@@ -4,7 +4,7 @@ export default {
     getFavorites: () => {
         let beers;
         try {
-            const beersJson = localStorage.getItem('favorite_beers');
+            const beersJson = localStorage.getItem('favorite_beers') || [];
             beers = JSON.parse(beersJson);
         } catch {
             beers = [];

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { includes } from 'lodash';
 
 import Method from './method-list';
 import Ingredients from './ingredients-list';
 import { cleanBeer, fetchBeer } from '../../reducers/beer/actions';
+import { addToFavorites, removeFromFavorites } from '../../reducers/favorites/actions';
 
 import './index.css';
 import Loader from '../../components/loader';
 
-const BeerDetails = ({ beer, fetchBeer, cleanBeer, match}) => { 
+const BeerDetails = ({ beer, fetchBeer, cleanBeer, match, addToFavorites, removeFromFavorites, favorites}) => { 
     const [isMount, setIsMount] = useState(false);
 
     useEffect(() => {   
@@ -35,7 +37,11 @@ const BeerDetails = ({ beer, fetchBeer, cleanBeer, match}) => {
                             <div className='beer-headliner__container'>
                                 <p className='beer-headliner'>{beer.tagline}</p>
                             </div>
-                            <button className='add-to-favorites'>add to favorites</button>
+                            { 
+                                (  includes(favorites, Number(beer.id)) && 
+                                    <button className='add-to-favorites' onClick={ () => removeFromFavorites(beer.id)}>remove from favorites</button>
+                                )
+                                || <button className='add-to-favorites' onClick={ () => addToFavorites(beer.id)}>add to favorites</button> }
                             <div className='beer-description__container'>
                                 <p className='beer-description'>{beer.description}</p>
                             </div>
@@ -111,12 +117,15 @@ const BeerDetails = ({ beer, fetchBeer, cleanBeer, match}) => {
 )}
 
 const mapStateToProps = state => ({
-    beer: state.beerItem.beer
+    beer: state.beerItem.beer,
+    favorites: state.favorites.beerItemIds
 })
 
 const mapDispatchToProps = dispatch => ({
     cleanBeer: () => dispatch(cleanBeer()),
     fetchBeer: (id) => dispatch(fetchBeer(id)),
+    addToFavorites: (id) => dispatch(addToFavorites(id)),
+    removeFromFavorites: (id) => dispatch(removeFromFavorites(id)),
   })
 
 export default connect(

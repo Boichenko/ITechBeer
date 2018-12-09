@@ -1,6 +1,17 @@
 import fetch from 'isomorphic-fetch';
-import { REQUEST_BEERS, RECEIVE_BEERS, INVALIDATE_REQUEST_BEERS, SEARCH_REQUEST_BEERS, SEARCH_RECEIVE_BEERS, INVALIDATE_SEARCH_BEERS, FILTER_BEERS } from './types';
-import { PUNK_API_URL, BEERS_PER_PAGE } from '../../constants';
+import {
+  REQUEST_BEERS,
+  RECEIVE_BEERS,
+  INVALIDATE_REQUEST_BEERS,
+  SEARCH_REQUEST_BEERS,
+  SEARCH_RECEIVE_BEERS,
+  INVALIDATE_SEARCH_BEERS
+} from './types';
+
+import {
+  PUNK_API_URL,
+  BEERS_PER_PAGE
+} from '../../constants';
 
 let page = 0;
 
@@ -27,10 +38,13 @@ export const catchErrorRequestingBeers = (error) => {
   }
 }
 
-export const requestSearchBeers = (name) => {
+export const requestSearchBeers = (name, alcohol, bitterness, color) => {
   return {
     type: SEARCH_REQUEST_BEERS,
-    searchName: name
+    name,
+    alcohol,
+    bitterness,
+    color
   }
 }
 
@@ -50,15 +64,6 @@ export const catchErrorRequestingSearchBeers = (name, error) => {
   }
 }
 
-export const filterBeers = (alcohol, bitterness, color) => {
-  return {
-    type: FILTER_BEERS,
-    alcohol,
-    bitterness,
-    color
-  }
-}
-
 export const fetchBeers = () => {
   return function (dispatch) {
 
@@ -75,11 +80,11 @@ export const fetchBeers = () => {
   }
 }
 
-export const fetchBeersByName = (name) => {
+export const fetchFilterBeers = (name, alcohol, bitterness, color) => {
   return function (dispatch) {
 
-    dispatch(requestSearchBeers(name))
-    return fetch(PUNK_API_URL(`/beers?beer_name=${name.split(' ').join('_')}`))
+    dispatch(requestSearchBeers(name, alcohol, bitterness, color))
+    return fetch(PUNK_API_URL(`/beers?beer_name=${name.split(' ').join('_')}&abv_lt=${alcohol}&ibu_lt=${bitterness}&ebc_lt=${color}`))
       .then(response => {
         if (!response.ok) {
           throw Error(response.statusText);
