@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createLogger } from 'redux-logger'
 import { createStore } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import { applyMiddleware } from 'redux';
+import { applyMiddleware, compose } from 'redux';
 
 import rootReducer from './reducers';
 import * as serviceWorker from './serviceWorker';
@@ -15,7 +15,10 @@ import {Provider} from 'react-redux';
 
 const loggerMiddleware = createLogger();
 const store = createStore(rootReducer,
-    applyMiddleware(thunkMiddleware, loggerMiddleware));
+    compose(
+        applyMiddleware(thunkMiddleware, loggerMiddleware),
+        window.devToolsExtension ? window.devToolsExtension() : f => f
+      ));
 
 ReactDOM.render(
     <Provider store={store}>

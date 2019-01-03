@@ -1,0 +1,19 @@
+.main-content {
+    height: calc(100% - 90px);
+    background: #ffe3da;
+    background-position: center;
+    background-size: cover;
+    overflow: auto;
+    margin-right: -100px;
+    padding-right: 100px;
+}
+
+.main-content__container {
+    height: calc(100% + 10px);
+    padding-bottom: 10px;
+}
+
+.beers-list {
+    display: flex;
+    flex-wrap: wrap;
+}

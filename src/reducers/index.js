@@ -1,14 +1,14 @@
 import {combineReducers} from 'redux';
 
-import menuReducer from './sidebar';
-import dashboardReducer from './dashboard';
-import beerReducer from './beer';
-import favoritesReducer from './favorites';
-import filterReducer from './filter';
+import sidebarReducer from './sidebar/sidebarReducer';
+import dashboardReducer from './dashboard/dashboardReducer';
+import filterReducer from './filter/filterReducer';
+import favoritesReducer from './favorites/favoritesReducer';
+import beerReducer from './beer/beerReducer';
 
 
 const rootReducer = combineReducers({
-        menu: menuReducer, 
+        sidebar: sidebarReducer, 
         dashboard: dashboardReducer, 
         beerItem: beerReducer,
         favorites: favoritesReducer,

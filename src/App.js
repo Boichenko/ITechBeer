@@ -1,23 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
-import Dashboard from './containers/dashboard/index';
-import Header from './containers/header/index';
-import Sidebar from './components/sidebar/index';
+import './App.css';
+import Dashboard from './containers/dashboard';
+import Header from './containers/header';
+import Sidebar from './components/sidebar';
 import BeerDetails from './containers/beer-details';
 import Favorites from './containers/favorites';
 
-import { toggleVisibilityMenu } from './reducers/sidebar/actions';
+import { toggleVisibilitySidebar } from './actions/sidebar';
 
-const App = ({ sideBarVisible, toggleVisibilityMenu }) => {
+const App = ({ sideBarVisible, toggleVisibilitySidebar }) => {
   let menu;
 
   const handleClick = (e) => {
-    return !sideBarVisible || menu.contains(e.target) 
-      ? null 
-      : toggleVisibilityMenu();
+    if (sideBarVisible && !menu.contains(e.target)) {
+      return toggleVisibilitySidebar();
+    }
   }
 
   return (
@@ -30,21 +31,25 @@ const App = ({ sideBarVisible, toggleVisibilityMenu }) => {
         }
         <Header />
 
-        <Route path="/beer/:beerId" component={ BeerDetails } />
-        <Route exact path="/" component={ Dashboard } />
-        <Route exact path="/favorites" component={ Favorites } />
+        <Route path="/beer/:beerId" component={BeerDetails} />
+        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/favorites" component={Favorites} />
       </div>
     </Router>
   )
 }
 
+App.propTypes = {
+  toggleVisibilitySidebar: PropTypes.func.isRequired,
+  sideBarVisible: PropTypes.bool.isRequired
+}
 
 const mapStateToProps = state => ({
-  sideBarVisible: state.menu.visible
+  sideBarVisible: state.sidebar.get('isVisible')
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleVisibilityMenu: () => dispatch(toggleVisibilityMenu())
+  toggleVisibilitySidebar: () => dispatch(toggleVisibilitySidebar())
 })
 
 export default connect(

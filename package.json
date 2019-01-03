@@ -5,6 +5,7 @@
   "dependencies": {
     "dotenv-webpack": "^1.5.7",
     "env": "0.0.2",
+    "immutable": "^4.0.0-rc.12",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.11",
     "normalize.css": "^5.0.0",
@@ -16,6 +17,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
     "redux": "^4.0.1",
+    "redux-actions": "^2.6.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
